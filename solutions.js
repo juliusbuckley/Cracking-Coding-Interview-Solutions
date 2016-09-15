@@ -109,16 +109,16 @@ const palindromePerm = (str) => {
   }
 
   const isPal = (map) => {
-    let isOdd = true;
+    let isOdd = false;
     for (let key in map) {
       if (map[key] % 2 && map[key] !== 1) {
         return false;
       }
       if (map[key] === 1) {
-        count++;
-      }
-      if (isOdd && count > 1) {
-        return false;
+        if (isOdd) {
+          return false;
+        }
+        isOdd = true;
       }
     }
     return true;
