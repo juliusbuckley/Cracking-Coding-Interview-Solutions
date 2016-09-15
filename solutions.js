@@ -76,3 +76,57 @@ assert(checkPermutation2('stressed', 'desserts') === true, `Expected ${checkPerm
 assert(checkPermutation2('rewarder', 'redrawer') === true, `Expected ${checkPermutation2('stressed', 'desserts')} to equal true`);
 assert(checkPermutation2('america', 'canada') === false, `Expected ${checkPermutation2('america', 'canada')} to equal false`);
 assert(checkPermutation2('cat', 'dog') === false, `Expected ${checkPermutation2('cat', 'dog')} to equal false`);
+
+// Write a method to replace all spaces in a string with '%20  You may assume that the string has sufficient space at the end to hold the additional characters,and that you are given the "true" length of the string.
+const URLify = (str, length) => {
+  let trueString = str.slice(0,length);
+  let result = '';
+  for (let i = 0; i < trueString.length; i++) {
+    let current = trueString[i];
+    if (current === ' ') {
+      result += '%20';
+    } else {
+      result += current;
+    }
+  }
+  return result;
+};
+
+assert(URLify('Mr John Smith ', 13) === 'Mr%20John%20Smith', `Expected ${URLify('Mr John Smith ', 13)} to equal true`);
+
+// Given a string, write a function to check if it is a permutation of a palin­drome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
+
+const palindromePerm = (str) => {
+  str = str.split(' ').join('').toLowerCase();
+
+  const createMap = (str) => {
+    const map = {};
+    for (let i = 0; i < str.length; i++) {
+      let letter = str[i];
+      map[letter] ? map[letter]++ : map[letter] = 1;
+    }
+    return map;
+  }
+
+  const isPal = (map) => {
+    let isOdd = true;
+    for (let key in map) {
+      if (map[key] % 2 && map[key] !== 1) {
+        return false;
+      }
+      if (map[key] === 1) {
+        count++;
+      }
+      if (isOdd && count > 1) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  return isPal(createMap(str));
+};
+
+assert(palindromePerm('Tact Coa') === true, `Expected ${palindromePerm('Tact Coa')} to equal true`);
+assert(palindromePerm('abc') === false, `Expected ${palindromePerm('abc')} to equal false`);
+assert(palindromePerm('Race Car') === true, `Expected ${palindromePerm('Race Car')} to equal true`);
