@@ -27,7 +27,7 @@ const isUnique = (str) => {
 };
 
 // assert(isUnique('abcded') === false, 'Expected false');
-// assert(isUnique('abc') === true, 'Expected rue');
+// assert(isUnique('abc') === true, 'Expected true');
 
 // Check Permutation: Given two strings,write a method to decide if one is a permutation of the
 // other.
@@ -164,3 +164,23 @@ const oneAway = (str1, str2) => {
 // assert(oneAway('pale', 'bale') === true, 'Expected true');
 // assert(oneAway('pale', 'bake') === false, 'Expected false');
 // assert(oneAway('pale', 'paleapples') === false, 'Expected false');
+
+// Implement a method to perform basic string compression using the counts of repeated characters. For example, the string aabcccccaaa would become a2b1c5a3. If the "compressed" string would not become smaller than the original string, your method should return the original string. You can assume the string has only uppercase and lowercase letters (a - z).
+
+const stringCompression = (str) => {
+  let current = str[0];
+  let result = '';
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    count++;
+    if (current !== str[i+1]) {
+      result += current + count;
+      count = 0;
+      current = str[i+1];
+    }
+  }
+  return result.length > str.length ? str : result;
+};
+
+assert(stringCompression('aabcccccaaa') === 'a2b1c5a3', 'Expected true');
+assert(stringCompression('abc') === 'abc', 'Expected true');
