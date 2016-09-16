@@ -26,8 +26,8 @@ const isUnique = (str) => {
   return true;
 };
 
-// assert(isUnique('abcded') === false, `Expected ${isUnique('abcded')} to equal false`);
-// assert(isUnique('abc') === true, `Expected ${isUnique('abcded')} to equal true`);
+// assert(isUnique('abcded') === false, 'Expected false');
+// assert(isUnique('abc') === true, 'Expected rue');
 
 // Check Permutation: Given two strings,write a method to decide if one is a permutation of the
 // other.
@@ -62,15 +62,15 @@ const checkPermutation2 = (str1, str2) => {
   return true;
 };
 
-// assert(checkPermutation('stressed', 'desserts') === true, `Expected ${checkPermutation('stressed', 'desserts')} to equal true`);
-// assert(checkPermutation('rewarder', 'redrawer') === true, `Expected ${checkPermutation('stressed', 'desserts')} to equal true`);
-// assert(checkPermutation('america', 'canada') === false, `Expected ${checkPermutation('america', 'canada')} to equal false`);
-// assert(checkPermutation('cat', 'dog') === false, `Expected ${checkPermutation('cat', 'dog')} to equal false`);
+// assert(checkPermutation('stressed', 'desserts') === true, 'Expected true');
+// assert(checkPermutation('rewarder', 'redrawer') === true, 'Expected true');
+// assert(checkPermutation('america', 'canada') === false, 'Expected false');
+// assert(checkPermutation('cat', 'dog') === false, 'Expected false');
 
-// assert(checkPermutation2('stressed', 'desserts') === true, `Expected ${checkPermutation2('stressed', 'desserts')} to equal true`);
-// assert(checkPermutation2('rewarder', 'redrawer') === true, `Expected ${checkPermutation2('stressed', 'desserts')} to equal true`);
-// assert(checkPermutation2('america', 'canada') === false, `Expected ${checkPermutation2('america', 'canada')} to equal false`);
-// assert(checkPermutation2('cat', 'dog') === false, `Expected ${checkPermutation2('cat', 'dog')} to equal false`);
+// assert(checkPermutation2('stressed', 'desserts') === true, 'Expected true');
+// assert(checkPermutation2('rewarder', 'redrawer') === true, 'Expected true');
+// assert(checkPermutation2('america', 'canada') === false, 'Expected false');
+// assert(checkPermutation2('cat', 'dog') === false, 'Expected false');
 
 // Write a method to replace all spaces in a string with '%20  You may assume that the string has sufficient space at the end to hold the additional characters,and that you are given the "true" length of the string.
 const URLify = (str, length) => {
@@ -87,7 +87,7 @@ const URLify = (str, length) => {
   return result;
 };
 
-// assert(URLify('Mr John Smith ', 13) === 'Mr%20John%20Smith', `Expected ${URLify('Mr John Smith ', 13)} to equal true`);
+// assert(URLify('Mr John Smith ', 13) === 'Mr%20John%20Smith', 'Expectedtrue');
 
 // Given a string, write a function to check if it is a permutation of a palin­drome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
 // O(N)
@@ -119,10 +119,10 @@ const palindromePerm = (str) => {
   return isPal(createMap(str));
 };
 
-// assert(palindromePerm('Tact Coa') === true, `Expected ${palindromePerm('Tact Coa')} to equal true`);
-// assert(palindromePerm('TR') === false, `Expected ${palindromePerm('TR')} to equal false`);
-// assert(palindromePerm('abc') === false, `Expected ${palindromePerm('abc')} to equal false`);
-// assert(palindromePerm('Race Car') === true, `Expected ${palindromePerm('Race Car')} to equal true`);
+// assert(palindromePerm('Tact Coa') === true, 'Expected true');
+// assert(palindromePerm('TR') === false, 'Expected false');
+// assert(palindromePerm('abc') === false, 'Expected false');
+// assert(palindromePerm('Race Car') === true, 'Expected true');
 
 // There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
 const oneAway = (str1, str2) => {
@@ -156,11 +156,11 @@ const oneAway = (str1, str2) => {
   return checkEdits(createMap(string1), createMap(string2));
 };
 
-assert(oneAway('pale', 'ple') === true, `Expected ${oneAway('pale', 'ple')} to equal true`);
-assert(oneAway('pales', 'pale') === true, `Expected ${oneAway('pales', 'pale')} to equal true`);
-assert(oneAway('pale', 'pales') === true, `Expected ${oneAway('pale', 'pales')} to equal true`);
-assert(oneAway('ale', 'pale') === true, `Expected true`);
-assert(oneAway('pppale', 'pale') === false, `Expected false`);
-assert(oneAway('pale', 'bale') === true, `Expected ${oneAway('pale', 'bale')} to equal true`);
-assert(oneAway('pale', 'bake') === false, `Expected ${oneAway('pale', 'bake')} to equal false`);
-assert(oneAway('pale', 'paleapples') === false, `Expected ${oneAway('pale', 'bake')} to equal false`);
+// assert(oneAway('pale', 'ple') === true, 'Expected true');
+// assert(oneAway('pales', 'pale') === true, 'Expected true');
+// assert(oneAway('pale', 'pales') === true, 'Expected true');
+// assert(oneAway('ale', 'pale') === true, 'Expected true');
+// assert(oneAway('pppale', 'pale') === false, 'Expected false');
+// assert(oneAway('pale', 'bale') === true, 'Expected true');
+// assert(oneAway('pale', 'bake') === false, 'Expected false');
+// assert(oneAway('pale', 'paleapples') === false, 'Expected false');
