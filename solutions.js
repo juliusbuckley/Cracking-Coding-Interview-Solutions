@@ -35,7 +35,6 @@ const checkPermutation = (str1, str2) => {
   if (str1.length !== str2.length) {
     return false;
   }
-  
   let newStr1 = str1.split('').sort().join('');
   let newStr2 = str2.split('').sort().join('');
   return newStr1 === newStr2;
@@ -45,7 +44,6 @@ const checkPermutation2 = (str1, str2) => {
   if (str1.length !== str2.length) {
     return false;
   }
-
   const objectMap = (str) => {
     const map = {};
     for (let i = 0; i < str.length; i++) {
@@ -54,16 +52,13 @@ const checkPermutation2 = (str1, str2) => {
     }
     return map;
   };
-
   const string1 = objectMap(str1);
   const string2 = objectMap(str2);
-
   for (let key in string1) {
     if (string1[key] !== string2[key]) {
       return false;
     }
   }
-
   return true;
 };
 
@@ -95,10 +90,9 @@ const URLify = (str, length) => {
 assert(URLify('Mr John Smith ', 13) === 'Mr%20John%20Smith', `Expected ${URLify('Mr John Smith ', 13)} to equal true`);
 
 // Given a string, write a function to check if it is a permutation of a palin­drome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
-
+// O(N)
 const palindromePerm = (str) => {
   str = str.split(' ').join('').toLowerCase();
-
   const createMap = (str) => {
     const map = {};
     for (let i = 0; i < str.length; i++) {
@@ -106,8 +100,7 @@ const palindromePerm = (str) => {
       map[letter] ? map[letter]++ : map[letter] = 1;
     }
     return map;
-  }
-
+  };
   const isPal = (map) => {
     let isOdd = false;
     for (let key in map) {
@@ -122,11 +115,43 @@ const palindromePerm = (str) => {
       }
     }
     return true;
-  }
-
+  };
   return isPal(createMap(str));
 };
 
 assert(palindromePerm('Tact Coa') === true, `Expected ${palindromePerm('Tact Coa')} to equal true`);
+assert(palindromePerm('TR') === false, `Expected ${palindromePerm('TR')} to equal false`);
 assert(palindromePerm('abc') === false, `Expected ${palindromePerm('abc')} to equal false`);
 assert(palindromePerm('Race Car') === true, `Expected ${palindromePerm('Race Car')} to equal true`);
+
+// There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
+const oneAway = (str1, str2) => {
+  const createMap = (str) => {
+    const map = {};
+    for (let i = 0; i < str.length; i++) {
+      let letter = str[i];
+      map[letter] ? map[letter]++ : map[letter] = 1;
+    }
+    return map;
+  }
+  const checkEdits = (map1, map2) => {
+    let flag = false;
+    for (let keys in map1) {
+      if (map1[keys] !== map2[keys]) {
+        if (flag) {
+          return false;
+        } else {
+          flag = true;
+        }
+      }
+    }
+    return true;
+  };
+  return checkEdits(createMap(str1), createMap(str2));
+};
+
+assert(oneAway('pale', 'ple') === true, `Expected ${oneAway('pale', 'ple')} to equal true`);
+assert(oneAway('pales', 'pale') === true, `Expected ${oneAway('pales', 'pale')} to equal true`);
+assert(oneAway('pale', 'pales') === true, `Expected ${oneAway('pale', 'pales')} to equal true`);
+assert(oneAway('pale', 'bale') === true, `Expected ${oneAway('pale', 'bale')} to equal true`);
+assert(oneAway('pale', 'bake') === false, `Expected ${oneAway('pale', 'bake')} to equal false`);
