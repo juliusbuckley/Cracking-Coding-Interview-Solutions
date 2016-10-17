@@ -74,7 +74,7 @@ const checkPermutation2 = (str1, str2) => {
 
 // Write a method to replace all spaces in a string with '%20  You may assume that the string has sufficient space at the end to hold the additional characters,and that you are given the "true" length of the string.
 const URLify = (str, length) => {
-  let trueString = str.slice(0,length);
+  let trueString = str.slice(0, length);
   let result = '';
   for (let i = 0; i < trueString.length; i++) {
     let current = trueString[i];
@@ -133,7 +133,7 @@ const oneAway = (str1, str2) => {
       map[letter] ? map[letter]++ : map[letter] = 1;
     }
     return map;
-  }
+  };
   const checkEdits = (map1, map2) => {
     let flag = false;
     for (let keys in map1) {
@@ -144,8 +144,7 @@ const oneAway = (str1, str2) => {
         } else {
           flag = true;
         }
-      }
-      else if (difference > 1) {
+      } else if (difference > 1) {
         return false;
       }
     }
@@ -166,21 +165,89 @@ const oneAway = (str1, str2) => {
 // assert(oneAway('pale', 'paleapples') === false, 'Expected false');
 
 // Implement a method to perform basic string compression using the counts of repeated characters. For example, the string aabcccccaaa would become a2b1c5a3. If the "compressed" string would not become smaller than the original string, your method should return the original string. You can assume the string has only uppercase and lowercase letters (a - z).
-
 const stringCompression = (str) => {
   let current = str[0];
   let result = '';
   let count = 0;
   for (let i = 0; i < str.length; i++) {
     count++;
-    if (current !== str[i+1]) {
+    if (current !== str[i + 1]) {
       result += current + count;
       count = 0;
-      current = str[i+1];
+      current = str[i + 1];
     }
   }
   return result.length > str.length ? str : result;
 };
 
-assert(stringCompression('aabcccccaaa') === 'a2b1c5a3', 'Expected true');
-assert(stringCompression('abc') === 'abc', 'Expected true');
+// assert(stringCompression('aabcccccaaa') === 'a2b1c5a3', 'Expected true');
+// assert(stringCompression('abc') === 'abc', 'Expected true');
+
+// Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+// O(N^2)
+const rotateMatrix = (matrix) => {
+  const n = matrix.length;
+  for (let layer = 0; layer < n / 2; layer++) {
+    console.log('layer =>', layer);
+    // store first index in top 
+    let first = layer;
+    let last = n - 1 - layer;
+    for (let i = first; i < last; i++) {
+      console.log('i =>', i);
+      let offset = i - first;
+      let tmp = matrix[first][i];
+      // assign bottom left to top left
+      matrix[first][i] = matrix[last - offset][first];
+      // assign bottom right to bottom left
+      matrix[last - offset][first] = matrix[last][last - offset];
+      // assign top right to bottom right
+      matrix[last][last - offset] = matrix[i][last];
+      // assign tmp to top right
+      matrix[i][last] = tmp;
+      console.log(matrix);
+    }
+    return true;
+  }
+
+};
+
+const initial = [
+  [1, 2, 3],
+  [4, 5, 6],  
+  [7, 8, 9],
+];
+
+ // [1, 2, 3],  7,  2, 1            7 4 1
+ //  [4, 5, 6], 4, 5, 6             8   2
+ //  [7, 8, 9], 9, 8, 3             9 6 3 
+const result = [
+  [7, 4, 1],
+  [8, 5, 2],
+  [9, 6, 3]
+];
+
+/*
+1  2  3  4
+5  6  7  8
+9  10 11 12
+13 14 15 16
+
+13 9  5 1
+14 10 6 2
+15 11 7 3
+16 12 8 4
+*/
+
+assert(rotateMatrix(initial) === true, 'Expected true');
+
+// Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
+// const zeroMatrix = (matrix) => {
+
+// };
+
+// assert(zeroMatrix(initial) === true, 'Expected true');
+
+//const stringRotation(str) => {
+
+//}
+
