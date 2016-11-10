@@ -185,8 +185,9 @@ class LinkedList {
   loopDetection() {
     let runner = this.head.next;
     let node = this.head;
-    while (runner) {
+    while (runner && runner.next) {
       if (node.value === runner.value) {
+        console.log('val', node.value);
         return node.value;
       }
       node = node.next;
@@ -202,6 +203,9 @@ list.addToTail('b');
 list.addToTail('c');
 list.addToTail('d');
 list.addToTail('e');
+list.addToTail('f');
+list.addToTail('g');
+
 
 list.createLoop('e', list.saveTargetNode('c'));
-console.assert(list.loopDetection() === 'c');
+console.assert(list.loopDetection() === 'c', 'should be c');
